@@ -33,7 +33,7 @@ const costEstimate = computed(() => {
 });
 
 onMounted(async () => {
-  const response = await fetch(`${apiUrl}/api/destinations`);
+  const response = await fetch(`${apiUrl}api/destinations`);
   const data = await response.json();
   destinations.value = data.sort((a, b) => a.name < b.name ? -1 : 1);
 })
@@ -42,7 +42,7 @@ onMounted(async () => {
 <template>
   <h1>Destinos turísticos</h1>
   <p>{{ persons }} personas durante {{ days }} días en {{ chosenDestination.name }} alojandose en {{ chosenAccommodation
-  }}</p>
+    }}</p>
   <h3 v-if="costEstimate">Se estima {{ costEstimate.toFixed(2) }}€</h3>
   <BudgetPanel :costEstimate="costEstimate" />
   <RangeInput title="Número de personas" v-model="persons" :min="1" :max="10" />
