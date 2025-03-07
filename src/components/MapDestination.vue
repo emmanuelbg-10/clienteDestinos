@@ -27,5 +27,7 @@ iframe {
   box-shadow: var(--shadow);
   margin: 20px auto;
   display: block;
+  pointer-events: none;
+  /* Desactiva la interacción */
 }
 </style>
