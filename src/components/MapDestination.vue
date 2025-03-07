@@ -3,31 +3,29 @@ import { computed } from 'vue';
 
 const props = defineProps(['lat', 'lon', 'zoom']);
 
-const minLat = computed(() => {
-  return props.lat-props.zoom;
-});
+const minLat = computed(() => props.lat - props.zoom);
+const maxLat = computed(() => props.lat + props.zoom);
+const minLon = computed(() => props.lon - props.zoom);
+const maxLon = computed(() => props.lon + props.zoom);
 
-const maxLat = computed(() => {
-  return props.lat+props.zoom;
-});
-
-const minLon = computed(() => {
-  return props.lon-props.zoom;
-});
-
-const maxLon = computed(() => {
-  return props.lon+props.zoom;
-});
-
-const url = computed(()=>{
+const url = computed(() => {
   return `https://www.openstreetmap.org/export/embed.html?bbox=${minLon.value},${minLat.value},${maxLon.value},${maxLat.value}&amp;layer=mapnik`;
-})
+});
 </script>
 
 <template>
-  <iframe width="425" height="350"
-    :src="url"
-    style="border: 1px solid black"></iframe><br />
+  <iframe :src="url" title="Mapa de destino"></iframe>
 </template>
 
-<style scoped></style>
+<style scoped>
+iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin: 20px auto;
+  display: block;
+}
+</style>
