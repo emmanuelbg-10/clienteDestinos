@@ -33,7 +33,7 @@ const costEstimate = computed(() => {
 });
 
 onMounted(async () => {
-  const response = await fetch(`${apiUrl}api/destinations`);
+  const response = await fetch('https://serverdestino.vercel.app/api/destinations');
   const data = await response.json();
   destinations.value = data.sort((a, b) => a.name < b.name ? -1 : 1);
 })
